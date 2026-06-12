@@ -39,6 +39,7 @@ const WORKFLOW = [
   { step: "4", title: "Beboer bekrefter", desc: "Saken arkiveres med komplett, juridisk sporbar historikk." },
 ];
 
+
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-background">
