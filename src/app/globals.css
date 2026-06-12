@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette – premium Scandinavian SaaS */
+  --color-evergreen-50: #f0f7f4;
+  --color-evergreen-100: #dcebe4;
+  --color-evergreen-200: #b9d7cb;
+  --color-evergreen-300: #8cbcab;
+  --color-evergreen-400: #5c9c87;
+  --color-evergreen-500: #3d806c;
+  --color-evergreen-600: #2b6655;
+  --color-evergreen-700: #235246;
+  --color-evergreen-800: #1e4239;
+  --color-evergreen-900: #1a3730;
+  --color-evergreen-950: #0d1f1b;
+
+  --color-fjord-50: #eefafb;
+  --color-fjord-100: #d5f1f4;
+  --color-fjord-200: #b0e2e9;
+  --color-fjord-300: #79ccd9;
+  --color-fjord-400: #3bacc1;
+  --color-fjord-500: #1f8fa7;
+  --color-fjord-600: #1d748d;
+  --color-fjord-700: #1e5f73;
+  --color-fjord-800: #214f5f;
+  --color-fjord-900: #204251;
+  --color-fjord-950: #102a36;
+
+  --color-sand-50: #faf9f7;
+  --color-sand-100: #f3f1ec;
+  --color-sand-200: #e6e2d8;
+  --color-sand-300: #d4cdbd;
+
+  /* Semantic tokens */
+  --color-background: #f7f7f5;
+  --color-surface: #ffffff;
+  --color-foreground: #15201c;
+  --color-muted: #f1f3f1;
+  --color-muted-foreground: #5c6b64;
+  --color-border: #e4e7e4;
+  --color-primary: #235246;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #1d748d;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #f0f7f4;
+  --color-accent-foreground: #235246;
+  --color-destructive: #b3261e;
+  --color-destructive-foreground: #ffffff;
+  --color-success: #1f7a4d;
+  --color-warning: #b45309;
+  --color-info: #1d748d;
+  --color-ring: #3d806c;
+
+  --radius-xl: 0.875rem;
+  --radius-2xl: 1.125rem;
+
+  --shadow-card: 0 1px 2px rgb(21 32 28 / 0.04), 0 4px 16px rgb(21 32 28 / 0.05);
+  --shadow-card-hover: 0 2px 4px rgb(21 32 28 / 0.05), 0 8px 28px rgb(21 32 28 / 0.09);
+  --shadow-pop: 0 4px 12px rgb(21 32 28 / 0.08), 0 16px 48px rgb(21 32 28 / 0.14);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-evergreen-200);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Subtle scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sand-300) transparent;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.35s ease both;
+}
+
+.animate-toast-in {
+  animation: toast-in 0.25s ease both;
+}
+
+.gradient-hero {
+  background:
+    radial-gradient(1100px 500px at 85% -10%, rgb(176 226 233 / 0.35), transparent 60%),
+    radial-gradient(900px 480px at 10% -20%, rgb(185 215 203 / 0.5), transparent 55%),
+    linear-gradient(180deg, #fbfbfa 0%, #f7f7f5 100%);
+}
+
+.gradient-brand {
+  background: linear-gradient(135deg, var(--color-evergreen-700) 0%, var(--color-evergreen-900) 60%, var(--color-fjord-900) 100%);
+}
+
+.gradient-card {
+  background: linear-gradient(160deg, #ffffff 0%, #f6faf8 100%);
+}

@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tveller MVP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Hovedmeny">
+        <a class="brand" href="#dashboard" aria-label="Tveller dashboard">
+          <img src="assets/tveller-logo.png" alt="" />
+          <span>Tveller</span>
+        </a>
+        <nav class="nav-list">
+          <a class="active" href="#dashboard" data-nav="dashboard">Dashboard</a>
+          <a href="#claims" data-nav="claims">Reklamasjoner</a>
+          <a href="#resident" data-nav="resident">Beboer</a>
+          <a href="#vendors" data-nav="vendors">Underleverandører</a>
+          <a href="#calendar" data-nav="calendar">Kalender</a>
+          <a href="#documents" data-nav="documents">Dokumenter</a>
+        </nav>
+        <div class="project-card">
+          <span class="eyebrow">Aktivt prosjekt</span>
+          <strong>Middelthunet</strong>
+          <span>182 enheter · 68% overlevert</span>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <span class="eyebrow">MVP</span>
+            <h1>Reklamasjonshåndtering for nybygg</h1>
+          </div>
+          <div class="topbar-actions">
+            <div class="segmented" role="tablist" aria-label="Rolle">
+              <button class="active" type="button" data-role="owner">Utbygger</button>
+              <button type="button" data-role="resident">Beboer</button>
+              <button type="button" data-role="vendor">Leverandør</button>
+            </div>
+            <button class="primary-action" type="button" data-open-new-claim>Ny reklamasjon</button>
+          </div>
+        </header>
+
+        <section class="hero-strip" id="dashboard">
+          <div class="hero-copy">
+            <span class="eyebrow">Ettermarked</span>
+            <h2>Full kontroll fra SMS-invitasjon til kvittert utbedring.</h2>
+            <p>Utbygger ser status, beboer melder inn med bilde, underleverandør avtaler tid og alle hendelser logges på saken.</p>
+          </div>
+          <div class="handoff-flow" aria-label="Saksgang">
+            <div><span>1</span> Beboer melder</div>
+            <div><span>2</span> Utbygger vurderer</div>
+            <div><span>3</span> Leverandør avtaler</div>
+            <div><span>4</span> Begge kvitterer</div>
+          </div>
+        </section>
+
+        <section class="metrics-grid" aria-label="Nøkkeltall">
+          <article class="metric">
+            <span>Enheter</span>
+            <strong id="metric-units">182</strong>
+            <small>SMS-invitasjoner klare</small>
+          </article>
+          <article class="metric">
+            <span>Åpne saker</span>
+            <strong id="metric-open">0</strong>
+            <small>Sortert på frist og alvor</small>
+          </article>
+          <article class="metric">
+            <span>Løste saker</span>
+            <strong id="metric-closed">0</strong>
+            <small>Bekreftet av begge parter</small>
+          </article>
+          <article class="metric accent">
+            <span>Estimert spart</span>
+            <strong>72k</strong>
+            <small>kr per måned</small>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <article class="panel wide" id="claims">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">Utbygger</span>
+                <h3>Klagesaker</h3>
+              </div>
+              <div class="toolbar">
+                <select id="status-filter" aria-label="Filtrer status">
+                  <option value="all">Alle statuser</option>
+                  <option value="new">Nye</option>
+                  <option value="assigned">Tildelt</option>
+                  <option value="scheduled">Planlagt</option>
+                  <option value="closed">Lukket</option>
+                </select>
+                <button class="ghost-action" type="button" id="seed-critical">Simuler hastefeil</button>
+              </div>
+            </div>
+            <div class="claims-layout">
+              <div class="claim-list" id="claim-list"></div>
+              <div class="claim-detail" id="claim-detail"></div>
+            </div>
+          </article>
+
+          <article class="panel" id="resident">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">For beboer</span>
+                <h3>Opprett reklamasjon</h3>
+              </div>
+              <span class="status-pill good">C103 koblet</span>
+            </div>
+            <form class="claim-form" id="claim-form">
+              <label>
+                Enhet
+                <select name="unit">
+                  <option>C103 · Lise Frankum</option>
+                  <option>A204 · Amir Halvorsen</option>
+                  <option>B011 · Nora Vik</option>
+                </select>
+              </label>
+              <label>
+                Rom
+                <select name="room">
+                  <option>Bad</option>
+                  <option>Kjøkken</option>
+                  <option>Stue</option>
+                  <option>Soverom</option>
+                </select>
+              </label>
+              <label>
+                Beskrivelse
+                <textarea name="description" rows="4">Flere av flisene er sprukket på badet.</textarea>
+              </label>
+              <label>
+                Alvorlighet
+                <input name="severity" type="range" min="1" max="5" value="3" />
+              </label>
+              <div class="photo-preview">
+                <img src="assets/cracked-tile.png" alt="Sprukket flis med markering" />
+                <span class="photo-pin" aria-hidden="true"></span>
+              </div>
+              <button class="primary-action full" type="submit">Send reklamasjon</button>
+            </form>
+          </article>
+
+          <article class="panel" id="vendors">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">Underleverandører</span>
+                <h3>Leverandørkapasitet</h3>
+              </div>
+            </div>
+            <div class="vendor-list" id="vendor-list"></div>
+          </article>
+
+          <article class="panel wide" id="calendar">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">Planlegging</span>
+                <h3>Kalender og chat</h3>
+              </div>
+              <span class="status-pill" id="active-case-pill">Ingen sak valgt</span>
+            </div>
+            <div class="communication-grid">
+              <div class="chat-box">
+                <div class="messages" id="messages"></div>
+                <form class="message-form" id="message-form">
+                  <input name="message" placeholder="Skriv melding..." autocomplete="off" />
+                  <button type="submit" title="Send">➜</button>
+                </form>
+              </div>
+              <div class="schedule-box">
+                <h4>Foreslå tider</h4>
+                <div class="slot-grid" id="slot-grid"></div>
+                <button class="primary-action full" type="button" id="send-slots">Send tre tidspunkt</button>
+                <button class="ghost-action full" type="button" id="confirm-fix">Bekreft utbedring</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel" id="documents">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">Juridisk</span>
+                <h3>Dokumentlogg</h3>
+              </div>
+            </div>
+            <div class="document-list">
+              <div><strong>Overtakelsesprotokoll</strong><span>Signert 10.07.2023</span></div>
+              <div><strong>Bilder og markeringer</strong><span>Lagres per reklamasjon</span></div>
+              <div><strong>Kommunikasjon</strong><span>Eksporterbar historikk</span></div>
+              <div><strong>FDV</strong><span>Synlig for eier, beboer og leverandør</span></div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">Prosjekt</span>
+                <h3>Enheter og invitasjoner</h3>
+              </div>
+            </div>
+            <div class="unit-list" id="unit-list"></div>
+            <button class="ghost-action full" type="button" id="add-unit">Legg til enhet</button>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js?v=2"></script>
+  </body>
+</html>
